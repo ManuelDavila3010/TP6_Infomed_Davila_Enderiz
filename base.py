@@ -20,6 +20,7 @@ def send_resource_to_hapi_fhir(resource,resource_type):
         print(response.json())
         return None
 
+
 # Buscar el recurso por ID 
 def get_resource_from_hapi_fhir(resource_id, resource_type):
     url = f"http://hapi.fhir.org/baseR4/{resource_type}/{resource_id}"
@@ -32,3 +33,16 @@ def get_resource_from_hapi_fhir(resource_id, resource_type):
         print(f"Error al obtener el recurso: {response.status_code}")
         print(response.json())
 
+
+def buscar_paciente_por_documento(numero_documento):
+    url = f"http://hapi.fhir.org/baseR4/Patient?identifier={numero_documento}"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        if data.get("total", 0) > 0:
+            return data["entry"][0]["resource"]  # Retorna el primer paciente encontrado
+        else:
+            return "Paciente no encontrado"
+    else:
+        return f"Error en la solicitud: {response.status_code}"
