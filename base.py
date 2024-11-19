@@ -3,8 +3,11 @@ from patient import create_patient_resource
 
 
 # Enviar el recurso FHIR al servidor HAPI FHIR
-def send_resource_to_hapi_fhir(resource,resource_type):
-    url = f"http://hapi.fhir.org/baseR4/{resource_type}"
+def send_resource_to_hapi_fhir(resource, resource_type, url_alternativo = False):
+    if url_alternativo:
+        url = f"https://launch.smarthealthit.org/v/r4/fhir/{resource_type}"
+    else:
+        url = f"http://hapi.fhir.org/baseR5/{resource_type}"
     headers = {"Content-Type": "application/fhir+json"}
     resource_json = resource.json()
 
@@ -22,8 +25,11 @@ def send_resource_to_hapi_fhir(resource,resource_type):
 
 
 # Buscar el recurso por ID 
-def get_resource_from_hapi_fhir(resource_id, resource_type):
-    url = f"http://hapi.fhir.org/baseR4/{resource_type}/{resource_id}"
+def get_resource_from_hapi_fhir(resource_id, resource_type, url_alternativo = False):
+    if url_alternativo:
+        url = f"https://launch.smarthealthit.org/v/r4/fhir/{resource_type}/{resource_id}"
+    else:
+        url = f"http://hapi.fhir.org/baseR5/{resource_type}/{resource_id}"
     response = requests.get(url, headers={"Accept": "application/fhir+json"})
 
     if response.status_code == 200:
@@ -34,9 +40,13 @@ def get_resource_from_hapi_fhir(resource_id, resource_type):
         print(response.json())
 
 
-def buscar_paciente_por_documento(numero_documento):
-    url = f"http://hapi.fhir.org/baseR4/Patient?identifier={numero_documento}"
-    response = requests.get(url)
+def buscar_paciente_por_documento(numero_documento, url_alternativo = False):
+    if url_alternativo:
+        url = f"https://launch.smarthealthit.org/v/r4/fhir/Patient?identifier={numero_documento}"
+    else:
+        url = f"http://hapi.fhir.org/baseR5/Patient?identifier={numero_documento}"
+    #response = requests.get(url)
+    response = requests.get(url, headers={"Accept": "application/fhir+json"})
 
     if response.status_code == 200:
         data = response.json()
