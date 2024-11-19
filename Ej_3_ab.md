@@ -60,7 +60,7 @@ def send_resource_to_hapi_fhir(resource, resource_type, url_alternativo = False)
         return None
 ```
 
-## Lectura del recurso creado
+# Lectura del recurso creado
 
 ```python
 def get_resource_from_hapi_fhir(resource_id, resource_type, url_alternativo = False):
@@ -78,7 +78,7 @@ def get_resource_from_hapi_fhir(resource_id, resource_type, url_alternativo = Fa
         print(response.json())
 ```
 
-## Función de búsqueda de paciente por DNI
+# Función de búsqueda de paciente por DNI
 
 ```python
 def buscar_paciente_por_documento(numero_documento, url_alternativo = False):
@@ -97,3 +97,7 @@ def buscar_paciente_por_documento(numero_documento, url_alternativo = False):
     else:
         return f"Error en la solicitud: {response.status_code}"
 ```
+
+# Resultado de ejecución
+
+<img src="Resultado_ejecución.png" width="1000" style="height:auto;">
