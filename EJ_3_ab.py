@@ -12,14 +12,16 @@ if __name__ == "__main__":
     active = True
 
     # Crear y enviar el recurso de paciente
+    print("\n")
     patient = create_patient_resource(family_name, given_name, birth_date, gender, phone, dni, active)
     patient_id = send_resource_to_hapi_fhir(patient, 'Patient', url_alternativo = True)
 
     # Ver el recurso de paciente creado
     if patient_id:
+        print("\nPaciente creado\n")
         get_resource_from_hapi_fhir(patient_id, 'Patient', url_alternativo = True)
 
     # Buscar el paciente creado por su DNI
     paciente_encontrado = buscar_paciente_por_documento(dni, url_alternativo = True)
-    print()
-    print(paciente_encontrado)
+    print("\nPaciente encontrado con el DNI\n")
+    print(paciente_encontrado, "\n")
