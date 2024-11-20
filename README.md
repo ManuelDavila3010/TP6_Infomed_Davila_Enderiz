@@ -19,3 +19,9 @@
 ## Descripción
 
 Introducción a la interoperabilidad de sistemas a través de FHIR.
+
+## Contenidos
+
+- Archivos .py de las funciones principales (base, workflow, patient, device)
+- Archivos .py de los ejercicios particulares (Ej_3_ab, Ej_3_c)
+- Archivos .md de los ejercicios particulares (Ej_3_ab, Ej_3_c)
