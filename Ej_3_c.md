@@ -86,3 +86,7 @@ def get_resource_from_hapi_fhir(resource_id, resource_type, url_alternativo = Fa
         print(f"Error al obtener el recurso: {response.status_code}")
         print(response.json())
 ```
+
+# Resultado de ejecución
+
+<img src="ejecución_3c.png" width="1000" style="height:auto;">
