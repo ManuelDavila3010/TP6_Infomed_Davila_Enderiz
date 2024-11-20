@@ -23,7 +23,13 @@ Los elementos que se consideraron para la creación del recurso fueron los sigui
 ## Creación del recurso
 
 ```python
-def create_device_resource(name=None, status=None, manufacturer=None, model_number=None, manufacture_date=None, expiration_date=None, id=None):
+def create_device_resource( name=None,
+                            status=None,
+                            manufacturer=None,
+                            model_number=None,
+                            manufacture_date=None,
+                            expiration_date=None,
+                            id=None ):
     device = Device()
     
     if name:
