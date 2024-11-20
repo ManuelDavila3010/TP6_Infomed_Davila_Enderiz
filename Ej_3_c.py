@@ -12,9 +12,12 @@ if __name__ == "__main__":
     id = "12345"
 
     # Crear y enviar el recurso de dispositivo
+    print("\n")
     device = create_device_resource(device_name, status, manufacturer, model_number, manufacture_date, expiration_date, id)
     device_id = send_resource_to_hapi_fhir(device, 'Device', url_alternativo = True)
 
     # Ver el recurso de dispositivo creado
     if device_id:
+        print("\n")
         get_resource_from_hapi_fhir(device_id, 'Device', url_alternativo = True)
+        print("\n")
